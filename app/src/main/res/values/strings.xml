@@ -9,4 +9,6 @@
     <string name="server_error">Server error</string>
     <string name="unknown_error">Something went wrong</string>
     <string name="retry">Retry</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
 </resources>
