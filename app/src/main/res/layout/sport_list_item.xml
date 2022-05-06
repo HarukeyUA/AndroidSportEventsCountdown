@@ -20,10 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             android:lines="1"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_sports_baseball"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="football" />
 

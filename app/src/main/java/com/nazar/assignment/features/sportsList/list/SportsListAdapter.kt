@@ -2,6 +2,7 @@ package com.nazar.assignment.features.sportsList.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
@@ -67,6 +68,7 @@ class SportsListAdapter(
                 }
                 eventsAdapter.submitList(sport.events)
                 sportNameText.text = sport.name
+                sportNameText.setCompoundDrawablesWithIntrinsicBounds(sport.icon, 0, 0, 0)
 
                 eventsList.isVisible = sport.isExpanded
 
