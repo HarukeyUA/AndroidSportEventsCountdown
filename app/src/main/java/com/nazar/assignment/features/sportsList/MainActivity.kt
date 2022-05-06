@@ -11,6 +11,8 @@ import com.nazar.assignment.databinding.ActivityMainBinding
 import com.nazar.assignment.features.sportsList.list.SportsListAdapter
 import com.nazar.assignment.features.sportsList.model.Event
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -47,6 +49,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        lifecycleScope.launchWhenStarted {
+            while (isActive) {
+                delay(COUNTDOWN_DELAY)
+                adapter.notifyItemRangeChanged(
+                    0,
+                    adapter.itemCount,
+                    SportsListAdapter.TICKER_PAYLOAD
+                )
+            }
+        }
     }
 
     private fun showSnackBar(@StringRes message: Int) {
@@ -55,5 +68,9 @@ class MainActivity : AppCompatActivity() {
             .setAction(R.string.retry) {
                 viewModel.fetchSports()
             }.show()
+    }
+
+    companion object {
+        private const val COUNTDOWN_DELAY = 1000L
     }
 }

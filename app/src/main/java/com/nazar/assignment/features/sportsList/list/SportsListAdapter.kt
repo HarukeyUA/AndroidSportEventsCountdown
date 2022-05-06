@@ -2,7 +2,6 @@ package com.nazar.assignment.features.sportsList.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
@@ -35,8 +34,18 @@ class SportsListAdapter(
         holder.bind(getItem(position))
     }
 
-    override fun onViewRecycled(holder: SportViewHolder) {
-        holder.onRecycle()
+    override fun onBindViewHolder(
+        holder: SportViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isNotEmpty()) {
+            if (payloads.first() is String && payloads.first() == TICKER_PAYLOAD) {
+                holder.bindTicker()
+            }
+        } else {
+            super.onBindViewHolder(holder, position, payloads)
+        }
     }
 
     class SportViewHolder(
@@ -76,8 +85,8 @@ class SportsListAdapter(
             }
         }
 
-        fun onRecycle() {
-            binding.eventsList.adapter = null
+        fun bindTicker() {
+            eventsAdapter.notifyItemRangeChanged(0, eventsAdapter.itemCount, TICKER_PAYLOAD)
         }
     }
 
@@ -96,5 +105,9 @@ class SportsListAdapter(
             return oldItem == newItem
         }
 
+    }
+
+    companion object {
+        const val TICKER_PAYLOAD = "TICKER"
     }
 }
