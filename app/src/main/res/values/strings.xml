@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Assignment</string>
+    <string name="event_days_countdown">%1$d d %2$02d:%3$02d:%4$02d</string>
+    <string name="event_hours_countdown">%1$02d:%2$02d:%3$02d</string>
+    <string name="event_now">Now</string>
+    <string name="starred_event_description">Favourite</string>
+    <string name="not_starred_event_description">Not favourite</string>
+    <string name="connection_error">Connection error</string>
+    <string name="server_error">Server error</string>
+    <string name="unknown_error">Something went wrong</string>
+    <string name="retry">Retry</string>
 </resources>
